@@ -1,7 +1,49 @@
+body {
+   margin: 0;
+   background-color: bisque;
+}
+
 select {
-   font-size: 2em;
+   font-size: 1.5em;
 }
 
 h1 {
    font-size: 3em;
+   text-align: center;
+}
+
+form {
+   display: flex;
+   flex-wrap: nowrap;
+   flex-direction: column;
+   gap: 15px;
+   max-width: 60vw;
+   margin: auto;
+}
+
+input {
+   background-color: aqua;
+   font-size: 1.5em;
+   width: 40vw;
+   margin: auto;
+}
+
+input:active {
+   background-color: aquamarine;
+}
+ 
+label {
+   font-size: x-large;
+}
+
+hr {
+   height: 4px;
+   width: 100%;
+   border: none;
+   background-color: black;
+}
+
+#gallery {
+   display: flex;
+   width: 85vw;
 }

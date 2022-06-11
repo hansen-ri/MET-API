@@ -1,13 +1,13 @@
- const baseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
+const baseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
 const deptUrl = baseUrl + "departments";
-const artUrl = baseUrl + "objects/14703";
+const artUrl = baseUrl + "objects";
 
 export default class ArtHelper {
   async init() {
-    let artDepartments = await this.makeRequest(deptUrl);
-    let artWorks = await this.makeRequest(artUrl);
-    console.log(artDepartments);
-    console.log(artWorks);
+    this.artDepartments = await this.makeRequest(deptUrl);
+    this.artWorks = await this.makeRequest(artUrl);
+    console.log(this.artDepartments);
+    console.log(this.artWorks);
     this.clickableDeptList(artDepartments);
    //  this.clickableArtistList(artWorks);
   }
@@ -26,24 +26,24 @@ export default class ArtHelper {
     }
   }
   clickableDeptList(list) {
-    // const element = document.getElementById(this.authorId);
-    // const authorHtml = this.quoteAuthors.map(author => `<option value="${author}">${author}</option>`);
-    // element.innerHTML = authorHtml.join('');
-
-    // let option = `<option value="${list.departments[i].displayName}">${list.departments[i].displayName}</option>`;
-    // element.appendChild(option);
-
     const element = document.getElementById("department-select");
     // console.log("this is the departments:" + list.departments[0].displayName);
-    for (let i = 0; i < 19; i++) {
-      let content = document.createTextNode(
-        `${list.departments[i].displayName}`
-      );
-      let option = document.createElement("option");
-      option.appendChild(content);
-      option.setAttribute("value", content);
-      element.appendChild(option);
-    }
+    artDepartments.forEach((item) => {
+      console.log(item);
+      let menuContent = list.departments[i].displayName;
+      let menuOption = document.createElement("option");
+      menuOption.value = item.displayName
+    })
+    // for (let i = 0; i < 21; i++) {
+    //   let content = document.createTextNode(
+    //     `${list.departments[i].displayName}`
+    //   );
+    //   let option = document.createElement("option");
+    //   option.appendChild(content);
+    //   // option.setAttribute("value", content);
+    //   option.value = i.content;
+    //   element.appendChild(option);
+    // }
   }
 
 //   clickableArtistList(list) {

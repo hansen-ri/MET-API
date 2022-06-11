@@ -13,17 +13,24 @@
    <header>
       <h1>Digital Gallery of the MET Museum</h1>
     </header>
+    <hr>
     <main>
-      <form>
+      <form onsubmit="">
          <label for="department-select">Art Departments:</label>
-         <select id="department-select">
-            <option value="" default>Choose Department</option>
+         <select name="department-select" id="department-select">
+            <optgroup label="Choose Department"></optgroup>
          </select>
+         
          <label for="artist-select">Artist:</label>
          <select name="artist-select" id="artist-select">
             <option value="" default>Choose Artist</option>
          </select>
+         <input type="submit"></input>
       </form>
+      <hr>
+      <div id="gallery">
+
+      </div>
     </main>
 </body>
 </html>
