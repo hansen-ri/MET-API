@@ -2,13 +2,14 @@ const baseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
 const deptUrl = baseUrl + "departments";
 const artUrl = baseUrl + "objects";
 
+
 export default class ArtHelper {
   async init() {
     this.artDepartments = await this.makeRequest(deptUrl);
     this.artWorks = await this.makeRequest(artUrl);
     console.log(this.artDepartments);
     console.log(this.artWorks);
-    this.clickableDeptList(artDepartments);
+    this.clickableDeptList(this.artDepartments);
    //  this.clickableArtistList(artWorks);
   }
   async makeRequest(url) {
@@ -27,23 +28,21 @@ export default class ArtHelper {
   }
   clickableDeptList(list) {
     const element = document.getElementById("department-select");
+    console.log(list);
     // console.log("this is the departments:" + list.departments[0].displayName);
-    artDepartments.forEach((item) => {
-      console.log(item);
-      let menuContent = list.departments[i].displayName;
-      let menuOption = document.createElement("option");
-      menuOption.value = item.displayName
-    })
-    // for (let i = 0; i < 21; i++) {
-    //   let content = document.createTextNode(
-    //     `${list.departments[i].displayName}`
-    //   );
-    //   let option = document.createElement("option");
-    //   option.appendChild(content);
-    //   // option.setAttribute("value", content);
-    //   option.value = i.content;
-    //   element.appendChild(option);
-    // }
+      // let menuContent = list.departments[i].displayName;
+      // let menuOption = document.createElement("option");
+      // menuOption.value = item.displayName
+    for (let i = 0; i < 21; i++) {
+      let content = document.createTextNode(
+        `${list.departments[i].displayName}`
+      );
+      let option = document.createElement("option");
+      option.appendChild(content);
+      // option.setAttribute("value", content);
+      option.value = i.content;
+      element.appendChild(option);
+    }
   }
 
 //   clickableArtistList(list) {
